@@ -1,1 +1,31 @@
-<h1 class="container">Sara te amo</h1>
+<div class="container">
+		<div class="row">
+			<h1>Products</h1>
+		</div>
+		<div class="row">
+			<%= link_to 'Nuevo producto', new_product_path, class: 'btn btn-primary btn-lg col-md-3' %>
+		</div>
+		<div class="row">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Price</th>
+						<th>category</th>
+						<th></th>
+					</tr>
+				</thead>
+				<% @products.each do |product| %>
+					<tr>
+						<td><%= product.name %></td>
+						<td><%= product.price %></td>
+						<td>Categories</td>
+						<td>
+							<%= link_to 'Editar', '#' %>&nbsp
+							<%= link_to 'Eliminar', '#' %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
