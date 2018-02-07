@@ -10,6 +10,10 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
+		
+		params[:category_ids].each do |id|
+			@product.categories << Category.find(id)
+		end
 
 		@product.save
 		redirect_to 'products#index'

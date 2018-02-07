@@ -19,7 +19,11 @@
 					<tr>
 						<td><%= product.name %></td>
 						<td><%= product.price %></td>
-						<td>Categories</td>
+						<td>
+							<% product.categories.each do |category| %>
+								<%= category.name %>
+							<% end %>
+						</td>
 						<td>
 							<%= link_to 'Editar', '#' %>&nbsp
 							<%= link_to 'Eliminar', '#' %>
