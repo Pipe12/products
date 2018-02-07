@@ -8,6 +8,11 @@ class ProductsController < ApplicationController
 		@categories = Category.all
 	end
 
+	def edit
+		@product = Product.find(params[:id])
+		@categories = Category.all
+	end
+
 	def create
 		@product = Product.new(product_params)
 		
