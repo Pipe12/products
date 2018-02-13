@@ -5,7 +5,7 @@
 		</div>
 		<div class="row">
 			<!-- -->
-			<%= form_with scope: :product, url: products_path, local: true do |form| %>
+			<%= form_for(@product, url: product_path) do |form| %>
 				<div class="form-group">
 					<%= form.text_field :name, placeholder: "Nombre", class: "form-control" %>
 				</div>
@@ -16,13 +16,18 @@
 					<ul>
 						<% @categories.each do |category| %>
 							<li>
-								<%= check_box_tag "category_ids[]", category.id  %>
+								<% if @product.categories.exists?("#{category.id}") %>
+									<% check = true %>
+								<% else %>
+									<% check = false %>
+								<% end %>
+								<%= check_box_tag "category_ids[]", category.id, check%>
 								<%= category.name %>
 							</li>
 						<% end %> 
 					</ul>
 				</div>
-				<%= form.submit 'Nuevo producto', class: 'btn btn-primary btn-block' %>
+				<%= form.submit 'Editar producto', class: 'btn btn-primary btn-block' %>
 			<% end %>
 		</div>
 	</div>
