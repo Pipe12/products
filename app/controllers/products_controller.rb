@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 		end
 
 		@product.save
-		redirect_to 'products#index'
+		redirect_to action: "index"
 	end
 
 	def update
@@ -34,12 +34,14 @@ class ProductsController < ApplicationController
 			end
 		end
 
-		params[:category_ids].each do |id|
-			@product.categories << Category.find(id)
+		if params[:category_ids] != nil
+			params[:category_ids].each do |id|
+				@product.categories << Category.find(id)
+			end
 		end
 
 		@product.update(product_params)
-		redirect_to @product
+		redirect_to action: "index"
 	end
 
 	private
